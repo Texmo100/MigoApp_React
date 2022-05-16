@@ -1,6 +1,5 @@
 .wrapper-app {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: calc(100vh - 8rem);
+    max-height: 100%;
+    margin-top: 8rem;
 }

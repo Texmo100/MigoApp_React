@@ -1,0 +1,27 @@
+.header {
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 50%);
+    width: 100%;
+    height: 6rem;
+    display: flex;
+}
+
+.menu-button {
+    display: block;
+    border: none;
+    background-color: black;
+    color: #e8e8e8;
+    width: 15rem;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+.menu-button:hover {
+    cursor: pointer;
+    background-color: #E30B5C;
+}
+
+.menu-button__icon {
+    font-size: 3rem;
+}
