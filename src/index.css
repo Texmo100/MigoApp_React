@@ -18,6 +18,10 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
-p, h1 {
+p, h1, ul {
     margin: 0;
+}
+
+ul {
+    padding: 0;
 }

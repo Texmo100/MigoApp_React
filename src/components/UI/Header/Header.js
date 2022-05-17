@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
-import { CgMenuLeftAlt } from 'react-icons/cg';
+import { CgMenuLeftAlt, CgShapeTriangle } from 'react-icons/cg';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -16,6 +16,7 @@ const Header = () => {
             <button type='button' onClick={buttonHandler} className={styles['menu-button']}>
                 <CgMenuLeftAlt className={styles['menu-button__icon']} />
             </button>
+            <CgShapeTriangle className={styles['migo-icon']}/>
         </div>
     );
 }

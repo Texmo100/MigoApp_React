@@ -1,13 +1,21 @@
 import React from "react";
-import { CgMenuMotion } from 'react-icons/cg';
+import SidebarContent from "./SidebarContent";
+import SidebarButton from "./SidebarButton";
 import styles from './Sidebar.module.css';
 
 const Sidebar = ({ isShow, buttonHandler }) => {
     return (
         <nav className={`${styles.sidebar} ${isShow ? styles['sidebar--active'] : styles['sidebar--inactive']}`}>
-            <button type="button" onClick={buttonHandler} className={styles['back-button']}>
-                <CgMenuMotion className={styles['back-button__icon']} />
-            </button>
+            <SidebarButton size="small" type="back" buttonHandler={buttonHandler} />
+            <SidebarButton size="small" type="icon" />
+
+            <div className={styles['migo-title']}>
+                <p>migo</p>
+            </div>
+            
+            <SidebarContent />
+            <SidebarButton size="large" type="settings" />
+
         </nav>
     );
 }

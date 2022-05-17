@@ -1,0 +1,4 @@
+.sidebar-content {
+    list-style: none;
+    grid-column: 1 / -1;
+}
