@@ -1,0 +1,14 @@
+.wrapper-cards {
+    width: 50%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(25rem, auto);
+    row-gap: 2rem;
+}
+
+@media screen and (max-width: 768px){
+    .wrapper-cards {
+        width: 90%;
+    }
+}
