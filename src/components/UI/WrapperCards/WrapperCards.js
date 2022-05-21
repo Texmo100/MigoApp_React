@@ -7,10 +7,10 @@ const WrapperCards = () => {
     return (
         <div className={styles['wrapper-cards']}>
             {
-                animeWatchList.map(anime => (
+                animeWatchList.map((anime, index) => (
                     <Card
-                        key={anime.id}
-                        id={anime.id}
+                        key={index}
+                        id={index}
                         title={anime.title}
                         episodes={anime.episodes}
                         seasons={anime.seasons}
