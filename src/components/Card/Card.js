@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 
 const Card = ({ id, title, episodes, seasons, status, genres, score }) => {
     
-    const genresRender = genres.map(genre => <li className={styles['genres__item']}>{genre}</li>);
+    const genresRender = genres.map((genre, index) => <li key={index} className={styles['genres__item']}>{genre}</li>);
 
     return (
         <div className={styles.card}>
