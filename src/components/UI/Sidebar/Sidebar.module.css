@@ -3,10 +3,11 @@
     height: 100vh;
     background-color: black;
     position: fixed;
-    transition: all 200ms ease-in-out;
+    top: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 6rem 10rem auto 6rem;
+    transition: all 200ms ease-in-out;
 }
 
 .sidebar--active {
