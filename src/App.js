@@ -1,14 +1,14 @@
 import React from "react";
-import WrapperApp from "./components/UI/WrapperApp/WrapperApp";
+import AppWrapper from "./components/UI/AppWrapper/AppWrapper";
 import Header from "./components/UI/Header/Header";
-import WrapperCards from "./components/UI/WrapperCards/WrapperCards";
+import CardsWrapper from "./components/UI/CardsWrapper/CardsWrapper";
 
 const App = () => {
   return (
-    <WrapperApp>
+    <AppWrapper>
       <Header />
-      <WrapperCards />
-    </WrapperApp>
+      <CardsWrapper />
+    </AppWrapper>
   );
 }
 

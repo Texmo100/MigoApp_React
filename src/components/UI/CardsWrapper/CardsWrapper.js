@@ -1,11 +1,11 @@
 import React from 'react';
 import Card from '../../Card/Card';
 import animeWatchList from '../../../data/animeWatchList';
-import styles from './WrapperCards.module.css';
+import styles from './CardsWrapper.module.css';
 
 const WrapperCards = () => {
     return (
-        <div className={styles['wrapper-cards']}>
+        <div className={styles['cards-wrapper']}>
             {
                 animeWatchList.map((anime, index) => (
                     <Card
