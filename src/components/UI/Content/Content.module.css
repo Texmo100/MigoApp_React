@@ -70,11 +70,35 @@
     }
 }
 
-.cards-area {
-    width: 100%;
-    height: 100vh;
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+}
+
+.cards-wrapper--01 {
+    grid-auto-rows: minmax(25rem, auto);
+}
+
+.cards-wrapper--02 {
+    grid-auto-rows: minmax(10rem, auto);
+}
+
+/* simple card test */
+.simple-card {
+    background-color: #333333;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #111111;
+    transition: all 200ms ease;
+}
+
+.simple-card:hover {
+    cursor: pointer;
+    background-color: #444444;
+}
+
+.simple-card__text {
+    font-size: 1.8rem;
+    color: #e8e8e8;
 }
