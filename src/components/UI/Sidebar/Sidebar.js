@@ -8,14 +8,11 @@ const Sidebar = ({ isShow, buttonHandler }) => {
         <nav className={`${styles.sidebar} ${isShow ? styles['sidebar--active'] : styles['sidebar--inactive']}`}>
             <SidebarButton size="small" type="back" buttonHandler={buttonHandler} />
             <SidebarButton size="small" type="icon" />
-
             <div className={styles['migo-title']}>
                 <p>migo</p>
             </div>
-            
             <SidebarContent />
             <SidebarButton size="large" type="settings" />
-
         </nav>
     );
 }
