@@ -11,7 +11,7 @@ const Sidebar = ({ isShow, buttonHandler }) => {
             <div className={styles['migo-title']}>
                 <p>migo</p>
             </div>
-            <SidebarContent />
+            <SidebarContent buttonHandler={buttonHandler} />
             <SidebarButton size="large" type="settings" />
         </nav>
     );

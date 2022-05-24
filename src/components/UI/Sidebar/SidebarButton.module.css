@@ -55,6 +55,7 @@
     height: 6rem;
     background-color: black;
     transition: all 200ms ease;
+    text-decoration: none;
 }
 
 .sidebar-button--large-02:hover {

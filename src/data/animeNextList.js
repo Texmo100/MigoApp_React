@@ -1,4 +1,4 @@
-const animeWatchNextList = [
+const animeNextList = [
     "Keijo",
     "Kyoukai no Kanata",
     "Toaru Majutsu no Index (Saga)",
@@ -40,7 +40,10 @@ const animeWatchNextList = [
     "WitchBlade",
     "Babylon",
     "RahXephon",
-    "Princess resurrection"
+    "Princess resurrection",
+    "Bokusatsu Tenshi Dokuro-chan",
+    "Ben-To",
+    "Mahou Tsukai no Yome",
 ];
 
-export default animeWatchNextList;
+export default animeNextList;

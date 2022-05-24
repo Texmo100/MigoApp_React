@@ -3,7 +3,7 @@ import Card from '../../Card/Card';
 import animeWatchList from '../../../data/animeWatchList';
 import styles from './CardsWrapper.module.css';
 
-const WrapperCards = () => {
+const CardsWrapper = () => {
     return (
         <div className={styles['cards-wrapper']}>
             {
@@ -24,4 +24,4 @@ const WrapperCards = () => {
     );
 }
 
-export default WrapperCards;
+export default CardsWrapper;
