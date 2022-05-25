@@ -3,9 +3,9 @@ import styles from './AppWrapper.module.css';
 
 const AppWrapper = props => {
     return(
-        <main className={styles['app-wrapper']}>
+        <div className={styles['app-wrapper']}>
             { props.children }
-        </main>
+        </div>
     );
 }
 

@@ -17,7 +17,6 @@
     color: #e8e8e8;
     width: 15rem;
     height: 100%;
-    padding: 0.5rem;
 }
 
 .menu-button:hover {
@@ -30,8 +29,42 @@
 }
 
 .migo-icon {
-    margin-right: 4rem;
+    margin-right: 2rem;
     font-size: 4rem;
     transform: rotate(180deg);
     transition: all 200ms ease;
+}
+
+/* Search input test */
+.search-input {
+    width: 50rem;
+    height: 3rem;
+    display: flex;
+    background-color: rgba(255, 255, 255, 25%);
+    margin: 0 2rem;
+    padding: 0.5rem;
+}
+
+@media screen and (max-width: 768px){
+    .search-input {
+        width: auto;
+    }
+}
+
+.search-input__icon {
+    flex: 1;
+    align-self: center;
+}
+
+.search-input__input {
+    flex: 9;
+    border: none;
+    color: #e8e8e8;
+    padding: 0.5rem;
+    background-color: transparent;
+    text-align: center;
+}
+
+.search-input__input:focus {
+    background-color: rgba(0, 0, 0, 50%);
 }
