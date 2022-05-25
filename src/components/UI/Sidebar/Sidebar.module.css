@@ -30,3 +30,7 @@
     text-transform: uppercase;
     font-size: 4rem;
 }
+
+.sidebar-content {
+    grid-column: 1 / -1;
+}

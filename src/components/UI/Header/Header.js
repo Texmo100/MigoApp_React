@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <div className={styles.header}>
-            <Sidebar isShow={isShow} buttonHandler={buttonHandler} />
+            <Sidebar isShow={isShow} onButtonHandler={buttonHandler} />
             <button type='button' onClick={buttonHandler} className={styles['menu-button']}>
                 <CgMenuLeftAlt className={styles['menu-button__icon']} />
             </button>
