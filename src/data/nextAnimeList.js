@@ -1,4 +1,4 @@
-const animeNextList = [
+const nextAnimeList = [
     "Keijo",
     "Kyoukai no Kanata",
     "Toaru Majutsu no Index (Saga)",
@@ -46,4 +46,4 @@ const animeNextList = [
     "Mahou Tsukai no Yome",
 ];
 
-export default animeNextList;
+export default nextAnimeList;

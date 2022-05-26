@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../../../store/AppContext";
 import Card from '../../Card/Card';
-import animeWatchList from '../../../data/animeWatchList';
-import animeNextList from "../../../data/animeNextList";
 import { CgMathPlus } from 'react-icons/cg';
 import { MdEditNote } from 'react-icons/md';
 import styles from "./Content.module.css";
 
 const Content = ({ titlePage, contentType }) => {
+    const { animeWatchList, nextAnimeList } = useContext(AppContext);
 
     if (contentType === "home") {
         return (
@@ -74,7 +74,7 @@ const Content = ({ titlePage, contentType }) => {
                 </div>
                 <div className={`${styles['cards-wrapper']} ${styles['cards-wrapper--02']}`}>
                     {
-                        animeNextList.map((anime, index) => (
+                        nextAnimeList.map((anime, index) => (
                             <div key={index} className={styles['simple-card']}>
                                 <p className={styles['simple-card__text']}>{anime}</p>
                             </div>

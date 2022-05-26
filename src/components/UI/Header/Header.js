@@ -5,9 +5,16 @@ import { CgMenuLeftAlt, CgShapeTriangle, CgSearch } from 'react-icons/cg';
 import styles from './Header.module.css';
 
 const Header = () => {
+    const [searchTerm, setSearchTerm] = useState("");
     const [isShow, setIsShow] = useState(false);
 
-    const { optionSelected } = useContext(AppContext);
+    const { optionSelected, searchHandler } = useContext(AppContext);
+
+    const inputHandler = event => {
+        const { value } = event.target;
+        setSearchTerm(value);
+        searchHandler(value);
+    }
 
     const buttonHandler = () => {
         setIsShow(!isShow);
@@ -37,6 +44,8 @@ const Header = () => {
                 <CgSearch className={styles['search-input__icon']}/>
                 <input
                     type="search"
+                    value={searchTerm}
+                    onChange={inputHandler}
                     className={styles['search-input__input']}
                     placeholder={placeHolderHandler()}
                     disabled={!optionSelected || optionSelected === "home"}
