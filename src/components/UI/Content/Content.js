@@ -8,6 +8,14 @@ import styles from "./Content.module.css";
 
 const Content = ({ titlePage, contentType }) => {
 
+    if (contentType === "home") {
+        return (
+            <div className={styles.content}>
+                <h1 className={styles.title}>{titlePage}</h1>
+            </div>
+        );
+    }
+
     if (contentType === "anime") {
         return (
             <div className={styles.content}>

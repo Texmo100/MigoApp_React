@@ -14,6 +14,14 @@ const Sidebar = ({ isShow, onButtonHandler }) => {
                 <SidebarButton
                     size="large"
                     type="option"
+                    text="Home"
+                    redirectionPath="/"
+                    onButtonHandler={onButtonHandler}
+                />
+
+                <SidebarButton
+                    size="large"
+                    type="option"
                     text="Watch List"
                     redirectionPath="animeWatchList"
                     onButtonHandler={onButtonHandler}

@@ -22,7 +22,7 @@ const Header = () => {
             return 'search next anime'
         }
 
-        if(!optionSelected) {
+        if(!optionSelected || optionSelected === "home") {
             return 'select an option on the sidebar menu'
         }
     }
@@ -39,7 +39,7 @@ const Header = () => {
                     type="search"
                     className={styles['search-input__input']}
                     placeholder={placeHolderHandler()}
-                    disabled={!optionSelected}
+                    disabled={!optionSelected || optionSelected === "home"}
                 />
             </div>
             <CgShapeTriangle className={styles['migo-icon']}/>

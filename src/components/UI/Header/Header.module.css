@@ -28,17 +28,9 @@
     font-size: 3rem;
 }
 
-.migo-icon {
-    margin-right: 2rem;
-    font-size: 4rem;
-    transform: rotate(180deg);
-    transition: all 200ms ease;
-}
-
-/* Search input test */
 .search-input {
-    width: 50rem;
-    height: 3rem;
+    width: 60rem;
+    height: 100%;
     display: flex;
     background-color: rgba(255, 255, 255, 25%);
     margin: 0 2rem;
@@ -63,6 +55,13 @@
     padding: 0.5rem;
     background-color: transparent;
     text-align: center;
+    font-size: 1.6rem;
+}
+
+@media screen and (max-width: 768px) {
+    .search-input__input {
+        font-size: 1.4rem;
+    }
 }
 
 .search-input__input:focus {
@@ -71,4 +70,17 @@
 
 .search-input__input:disabled {
     cursor: not-allowed;
+}
+
+.migo-icon {
+    margin-right: 4rem;
+    font-size: 4rem;
+    transform: rotate(180deg);
+    transition: all 200ms ease;
+}
+
+@media screen and (max-width: 768px) {
+    .migo-icon {
+        font-size: 3rem;
+    }
 }
