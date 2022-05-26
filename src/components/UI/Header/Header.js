@@ -14,11 +14,11 @@ const Header = () => {
     }
 
     const placeHolderHandler = () => {
-        if(optionSelected === "Watch List") {
+        if(optionSelected === "watch list") {
             return 'search anime'
         }
 
-        if(optionSelected === "Next animes") {
+        if(optionSelected === "next animes") {
             return 'search next anime'
         }
 

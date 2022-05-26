@@ -10,7 +10,7 @@ const SidebarButton = ({ size, type, onButtonHandler, text, redirectionPath }) =
 
     const onClickButtonHandler = () => {
         onButtonHandler();
-        optionHandler(text);
+        optionHandler(text.toLowerCase());
     }
 
     if (size === "small" && type === "back") {

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import AppContext from './AppContext';
 
 const initialState = {
@@ -18,9 +18,21 @@ const reducer = (state, action) => {
 const AppProvider = props => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    const { optionSelected } = state;
+
+    useEffect(() => {
+        const localStorageItem = window.localStorage.getItem('optionSelected');
+        if(localStorageItem) {
+            dispatch({ type: 'OPTION', value: localStorageItem });
+        }
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem('optionSelected', optionSelected);
+    }, [optionSelected]);
+
     const optionHandler = optionName => {
         dispatch({ type: 'OPTION', value: optionName });
-        console.log(optionName);
     }
 
     const migoContext = {
