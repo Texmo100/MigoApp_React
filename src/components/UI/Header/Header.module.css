@@ -37,6 +37,14 @@
     padding: 0.5rem;
 }
 
+.search-input--active {
+    display: flex;
+}
+
+.search-input--inactive {
+    display: none;
+}
+
 @media screen and (max-width: 768px){
     .search-input {
         width: auto;

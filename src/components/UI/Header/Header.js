@@ -22,17 +22,15 @@ const Header = () => {
 
     const placeHolderHandler = () => {
         if(optionSelected === "watch list") {
-            return 'search anime'
+            return 'search anime';
         }
 
         if(optionSelected === "next animes") {
-            return 'search next anime'
-        }
-
-        if(!optionSelected || optionSelected === "home") {
-            return 'select an option on the sidebar menu'
+            return 'search next anime';
         }
     }
+
+    let isInputInactive = !optionSelected || optionSelected === "home";
 
     return (
         <div className={styles.header}>
@@ -40,7 +38,7 @@ const Header = () => {
             <button type='button' onClick={buttonHandler} className={styles['menu-button']}>
                 <CgMenuLeftAlt className={styles['menu-button__icon']} />
             </button>
-            <div className={styles['search-input']}>
+            <div className={`${styles['search-input']} ${isInputInactive ? styles['search-input--inactive'] : styles['search-input--active']}`}>
                 <CgSearch className={styles['search-input__icon']}/>
                 <input
                     type="search"
@@ -48,7 +46,6 @@ const Header = () => {
                     onChange={inputHandler}
                     className={styles['search-input__input']}
                     placeholder={placeHolderHandler()}
-                    disabled={!optionSelected || optionSelected === "home"}
                 />
             </div>
             <CgShapeTriangle className={styles['migo-icon']}/>
