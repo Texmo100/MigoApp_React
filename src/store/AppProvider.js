@@ -46,11 +46,29 @@ const AppProvider = props => {
     }, [optionSelected]);
 
     const searchHandler = searchParam => {
-        console.log(searchParam);
-        dispatch({type: 'SEARCH', value: searchParam });
+        // dispatch({type: 'SEARCH', value: searchParam });
+        if(optionSelected === "watch list") {
+            const cloneAnimeList = [...initialState.animeWatchList];
+            const newAnimeList = [...cloneAnimeList].filter(anime => animeSearcher(anime.title.toLowerCase(), searchParam.toLowerCase()));
+            dispatch({ type: 'FILTERANIME', value: newAnimeList });
+        }
+
+        if(optionSelected === "next animes") {
+            const cloneNextAnimeList = [...initialState.nextAnimeList];
+            const newNextAnimeList = [...cloneNextAnimeList].filter(animeTitle => animeSearcher(animeTitle.toLowerCase(), searchParam.toLowerCase()));
+            dispatch({ type: 'FILTERNEXTANIME', value: newNextAnimeList });
+        }
+    }
+
+    const animeSearcher = (animeTitle, param)=> {
+        if(animeTitle.includes(param)){
+            return true;
+        }
+        return false;
     }
 
     const optionHandler = optionName => {
+        console.log(optionName);
         dispatch({ type: 'OPTION', value: optionName });
     }
 
