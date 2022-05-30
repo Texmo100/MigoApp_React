@@ -32,7 +32,7 @@ const reducer = (state, action) => {
 const AppProvider = props => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const { optionSelected } = state;
+    const { optionSelected, searchTerm } = state;
 
     useEffect(() => {
         let localStorageItem = window.localStorage.getItem('optionSelected');
@@ -45,26 +45,29 @@ const AppProvider = props => {
         window.localStorage.setItem('optionSelected', optionSelected);
     }, [optionSelected]);
 
-    const searchHandler = searchParam => {
-        // dispatch({type: 'SEARCH', value: searchParam });
+    useEffect(() => {
         if(optionSelected === "watch list") {
             const cloneAnimeList = [...initialState.animeWatchList];
-            const newAnimeList = [...cloneAnimeList].filter(anime => animeSearcher(anime.title.toLowerCase(), searchParam.toLowerCase()));
+            const newAnimeList = [...cloneAnimeList].filter(anime => animeSearcher(anime.title.toLowerCase(), searchTerm.toLowerCase()));
             dispatch({ type: 'FILTERANIME', value: newAnimeList });
         }
 
         if(optionSelected === "next animes") {
             const cloneNextAnimeList = [...initialState.nextAnimeList];
-            const newNextAnimeList = [...cloneNextAnimeList].filter(animeTitle => animeSearcher(animeTitle.toLowerCase(), searchParam.toLowerCase()));
+            const newNextAnimeList = [...cloneNextAnimeList].filter(animeTitle => animeSearcher(animeTitle.toLowerCase(), searchTerm.toLowerCase()));
             dispatch({ type: 'FILTERNEXTANIME', value: newNextAnimeList });
         }
-    }
+    }, [optionSelected ,searchTerm]);
 
     const animeSearcher = (animeTitle, param)=> {
         if(animeTitle.includes(param)){
             return true;
         }
         return false;
+    }
+    
+    const searchHandler = searchParam => {
+        dispatch({type: 'SEARCH', value: searchParam });
     }
 
     const optionHandler = optionName => {
