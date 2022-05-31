@@ -1,17 +1,10 @@
-import React, { useContext } from 'react';
-import AppContext from '../../../store/AppContext';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { CgMenuMotion, CgShapeTriangle } from 'react-icons/cg';
 import { RiSettings3Fill } from 'react-icons/ri';
 import styles from './SidebarButton.module.css';
 
 const SidebarButton = ({ size, type, onButtonHandler, text, redirectionPath }) => {
-    const { optionHandler } = useContext(AppContext);
-
-    const onClickButtonHandler = () => {
-        onButtonHandler();
-        optionHandler(text.toLowerCase());
-    }
 
     if (size === "small" && type === "back") {
         return (
@@ -40,7 +33,7 @@ const SidebarButton = ({ size, type, onButtonHandler, text, redirectionPath }) =
 
     if (size === "large" && type === "option") {
         return (
-            <Link to={redirectionPath} onClick={onClickButtonHandler} className={`${styles['sidebar-button']} ${styles['sidebar-button--large-02']}`}>
+            <Link to={redirectionPath} onClick={onButtonHandler} className={`${styles['sidebar-button']} ${styles['sidebar-button--large-02']}`}>
                 <CgShapeTriangle className={styles['sidebar-button__icon']} />
                 <p className={styles['sidebar-button__text']}>{text}</p>
             </Link>

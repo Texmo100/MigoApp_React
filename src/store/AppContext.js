@@ -3,10 +3,9 @@ import React from 'react';
 const AppContext = React.createContext({
     animeWatchList: [],
     nextAnimeList: [],
-    optionSelected: "",
+    locationPage: "",
     searchTerm: "",
     searchHandler: (searchParam) => {},
-    optionHandler: (optionName) => {},
 });
 
 export default AppContext;

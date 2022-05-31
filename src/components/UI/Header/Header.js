@@ -8,7 +8,7 @@ const Header = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isShow, setIsShow] = useState(false);
 
-    const { optionSelected, searchHandler } = useContext(AppContext);
+    const { locationPage, searchHandler } = useContext(AppContext);
 
     const inputHandler = event => {
         const { value } = event.target;
@@ -21,16 +21,16 @@ const Header = () => {
     }
 
     const placeHolderHandler = () => {
-        if(optionSelected === "watch list") {
+        if(locationPage === "/animewatchlist") {
             return 'search anime';
         }
 
-        if(optionSelected === "next animes") {
+        if(locationPage === "/nextanimeslist") {
             return 'search next anime';
         }
     }
 
-    let isInputInactive = !optionSelected || optionSelected === "home";
+    let isInputInactive = !locationPage || locationPage === "/";
 
     return (
         <div className={styles.header}>

@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import AppContext from './AppContext';
 import animeWatchList from '../data/animeWatchList';
 import nextAnimeList from '../data/nextAnimeList';
@@ -6,15 +7,15 @@ import nextAnimeList from '../data/nextAnimeList';
 const initialState = {
     animeWatchList: animeWatchList,
     nextAnimeList: nextAnimeList,
-    optionSelected: "",
+    locationPage: "",
     searchTerm: "",
 };
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'OPTION':
-            const newOptionSelected = action.value;
-            return { ...state, optionSelected: newOptionSelected };
+        case 'LOCATION':
+            const newLocation = action.value;
+            return { ...state, locationPage: newLocation };
         case 'SEARCH':
             const newSearchTerm = action.value;
             return { ...state, searchTerm: newSearchTerm };
@@ -32,32 +33,28 @@ const reducer = (state, action) => {
 const AppProvider = props => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const { optionSelected, searchTerm } = state;
+    const { locationPage, searchTerm } = state;
+
+    const location = useLocation();
 
     useEffect(() => {
-        let localStorageItem = window.localStorage.getItem('optionSelected');
-        if(localStorageItem) {
-            dispatch({ type: 'OPTION', value: localStorageItem });
-        }
-    }, []);
+        let currentLocation = location.pathname.toString();
+        locationHandler(currentLocation.toLowerCase());
+    }, [location]);
 
     useEffect(() => {
-        window.localStorage.setItem('optionSelected', optionSelected);
-    }, [optionSelected]);
-
-    useEffect(() => {
-        if(optionSelected === "watch list") {
+        if(locationPage === "/animewatchlist") {
             const cloneAnimeList = [...initialState.animeWatchList];
             const newAnimeList = [...cloneAnimeList].filter(anime => animeSearcher(anime.title.toLowerCase(), searchTerm.toLowerCase()));
             dispatch({ type: 'FILTERANIME', value: newAnimeList });
         }
 
-        if(optionSelected === "next animes") {
+        if(locationPage === "/nextanimeslist") {
             const cloneNextAnimeList = [...initialState.nextAnimeList];
             const newNextAnimeList = [...cloneNextAnimeList].filter(animeTitle => animeSearcher(animeTitle.toLowerCase(), searchTerm.toLowerCase()));
             dispatch({ type: 'FILTERNEXTANIME', value: newNextAnimeList });
         }
-    }, [optionSelected ,searchTerm]);
+    }, [locationPage ,searchTerm]);
 
     const animeSearcher = (animeTitle, param)=> {
         if(animeTitle.includes(param)){
@@ -65,23 +62,21 @@ const AppProvider = props => {
         }
         return false;
     }
-    
-    const searchHandler = searchParam => {
-        dispatch({type: 'SEARCH', value: searchParam });
-    }
 
-    const optionHandler = optionName => {
-        console.log(optionName);
-        dispatch({ type: 'OPTION', value: optionName });
+    const locationHandler = locationPath => {
+        dispatch({ type: 'LOCATION', value: locationPath });
+    }
+    
+    const OnSearchHandler = searchParam => {
+        dispatch({type: 'SEARCH', value: searchParam });
     }
 
     const migoContext = {
         animeWatchList: state.animeWatchList,
         nextAnimeList: state.nextAnimeList,
-        optionSelected: state.optionSelected,
+        locationPage: state.locationPage,
         searchTerm: state.searchTerm,
-        searchHandler: searchHandler,
-        optionHandler: optionHandler
+        searchHandler: OnSearchHandler,
     };
 
     return (
