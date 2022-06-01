@@ -32,7 +32,24 @@ const Content = ({ titlePage, contentType }) => {
                             <p className={styles['action__text']}>Edit list</p>
                         </button>
                     </div>
-                    <div className={styles['filters']}>filters</div>
+                    <div className={styles['filters']}>
+                        <div className={styles['filter']}>
+                            <label className={styles['filter-label']}>Filter by status</label>
+                            <select className={styles['filter-input']}>
+                                <option value="inprogress" className={styles['filter-input__option']}>in progress</option>
+                                <option value="completed" className={styles['filter-input__option']}>completed</option>
+                                <option value="pending" className={styles['filter-input__option']}>pending</option>
+                            </select>
+                        </div>
+
+                        <div className={styles['filter']}>
+                            <label className={styles['filter-label']}>Order by</label>
+                            <select className={styles['filter-input']}>
+                                <option value="title" className={styles['filter-input__option']}>title</option>
+                                <option value="score" className={styles['filter-input__option']}>score</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div className={`${styles['cards-wrapper']} ${styles['cards-wrapper--01']}`}>
                     {
@@ -70,7 +87,15 @@ const Content = ({ titlePage, contentType }) => {
                             <p className={styles['action__text']}>Edit list</p>
                         </button>
                     </div>
-                    <div className={styles['filters']}>filters</div>
+                    <div className={styles['filters']}>
+                        <div className={styles['filter']}>
+                            <label className={styles['filter-label']}>Order list</label>
+                            <select className={styles['filter-input']}>
+                                <option value="ascending" className={styles['filter-input__option']}>ascending</option>
+                                <option value="descending" className={styles['filter-input__option']}>descending</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div className={`${styles['cards-wrapper']} ${styles['cards-wrapper--02']}`}>
                     {

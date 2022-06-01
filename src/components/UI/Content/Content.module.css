@@ -36,9 +36,9 @@
 
 .filters {
     flex-basis: calc(50% - 1rem);
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: #111111;
+    justify-content: initial;
 }
 
 .action {
@@ -68,6 +68,33 @@
     .action__text {
         font-size: 1.4rem;
     }
+}
+
+/* select input test */
+.filter {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.filter:last-of-type {
+    margin: 0;
+}
+
+.filter-label {
+    font-size: 1.4rem;
+    margin-right: 1rem;
+    width: 8rem;
+}
+
+.filter-input {
+    width: 100%;
+    height: 3rem;
+    background-color: #444444;
+    border: none;
+    border-radius: 0.5rem;
+    color: #e8e8e8;
+    padding: 0.5rem;
 }
 
 .cards-wrapper {
