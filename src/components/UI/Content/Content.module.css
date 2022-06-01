@@ -111,6 +111,12 @@
     grid-auto-rows: minmax(10rem, auto);
 }
 
+/* simple not found message */
+.not-found-message {
+    text-align: center;
+    text-transform: uppercase;
+}
+
 /* simple card test */
 .simple-card {
     background-color: #333333;

@@ -16,6 +16,9 @@ const Content = ({ titlePage, contentType }) => {
         );
     }
 
+    let isAnimeWatchListEmpty = animeWatchList.length === 0;
+    let isNextAnimeListEmpty = nextAnimeList.length === 0;
+
     if (contentType === "anime") {
         return (
             <div className={styles.content}>
@@ -53,6 +56,7 @@ const Content = ({ titlePage, contentType }) => {
                 </div>
                 <div className={`${styles['cards-wrapper']} ${styles['cards-wrapper--01']}`}>
                     {
+                        !isAnimeWatchListEmpty ?
                         animeWatchList.map((anime, index) => (
                             <Card
                                 key={index}
@@ -65,7 +69,10 @@ const Content = ({ titlePage, contentType }) => {
                                 score={anime.score}
                             />
                         ))
+                        :
+                        <p className={styles['not-found-message']}>no content found</p>
                     }
+
                 </div>
             </div>
         );
@@ -99,11 +106,14 @@ const Content = ({ titlePage, contentType }) => {
                 </div>
                 <div className={`${styles['cards-wrapper']} ${styles['cards-wrapper--02']}`}>
                     {
+                        !isNextAnimeListEmpty ?
                         nextAnimeList.map((anime, index) => (
                             <div key={index} className={styles['simple-card']}>
                                 <p className={styles['simple-card__text']}>{anime}</p>
                             </div>
                         ))
+                        :
+                        <p className={styles['not-found-message']}>no content found</p>
                     }
                 </div>
             </div>
