@@ -5,7 +5,11 @@ const AppContext = React.createContext({
     nextAnimeList: [],
     locationPage: "",
     searchTerm: "",
-    searchHandler: (searchParam) => {},
+    statusFilter: "",
+    orderFilter01: "",
+    orderFilter02: "",
+    onSearchHandler: (searchParam) => {},
+    onSelectHandler: (type, filterParam) => {},
 });
 
 export default AppContext;

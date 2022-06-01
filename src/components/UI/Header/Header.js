@@ -8,12 +8,12 @@ const Header = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isShow, setIsShow] = useState(false);
 
-    const { locationPage, searchHandler } = useContext(AppContext);
+    const { locationPage, onSearchHandler } = useContext(AppContext);
 
     const inputHandler = event => {
         const { value } = event.target;
         setSearchTerm(value);
-        searchHandler(value);
+        onSearchHandler(value);
     }
 
     const buttonHandler = () => {

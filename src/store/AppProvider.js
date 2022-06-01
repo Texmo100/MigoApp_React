@@ -9,6 +9,9 @@ const initialState = {
     nextAnimeList: nextAnimeList,
     locationPage: "",
     searchTerm: "",
+    statusFilter: "",
+    orderFilter01: "",
+    orderFilter02: "",
 };
 
 const reducer = (state, action) => {
@@ -19,6 +22,15 @@ const reducer = (state, action) => {
         case 'SEARCH':
             const newSearchTerm = action.value;
             return { ...state, searchTerm: newSearchTerm };
+        case 'STATUSFILTER': 
+            const newStatusFilter = action.value;
+            return { ...state, statusFilter: newStatusFilter };
+        case 'ORDERFILTER01':
+            const newOrderFilter01 = action.value;
+            return { ...state, orderFilter01: newOrderFilter01 };
+        case 'ORDERFILTER02':
+            const newOrderFilter02 = action.value;
+            return { ...state, orderFilter02: newOrderFilter02 };
         case 'FILTERANIME':
             const newFilteredAnimeList = action.value;
             return { ...state, animeWatchList: newFilteredAnimeList };
@@ -67,8 +79,25 @@ const AppProvider = props => {
         dispatch({ type: 'LOCATION', value: locationPath });
     }
     
-    const OnSearchHandler = searchParam => {
+    const onSearchHandler = searchParam => {
         dispatch({type: 'SEARCH', value: searchParam });
+    }
+
+    const onSelectHandler = (type, filterParam) => {
+        if(type === 'status') {
+            dispatch({type: 'STATUSFILTER', value: filterParam });
+            console.log({type, filterParam});
+        }
+
+        if(type === 'order01') {
+            dispatch({type: 'ORDERFILTER01', value: filterParam });
+            console.log({type, filterParam});
+        }
+
+        if(type === 'order02') {
+            dispatch({type: 'ORDERFILTER02', value: filterParam });
+            console.log({type, filterParam});
+        }
     }
 
     const migoContext = {
@@ -76,7 +105,8 @@ const AppProvider = props => {
         nextAnimeList: state.nextAnimeList,
         locationPage: state.locationPage,
         searchTerm: state.searchTerm,
-        searchHandler: OnSearchHandler,
+        onSearchHandler: onSearchHandler,
+        onSelectHandler: onSelectHandler
     };
 
     return (
