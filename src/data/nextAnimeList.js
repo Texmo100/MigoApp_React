@@ -11,7 +11,6 @@ const nextAnimeList = [
     "Nichijou",
     "Yasuke",
     "Sentouin, Hakenshimasu",
-    "Mushoku Tensei: Isekai Ittara Honki Dasu 2nd Season",
     "Scarlet Nexus",
     "Tsuki ga Michibiku Isekai Douchuu",
     "Isekai wa Smartphone to Tomo ni",
@@ -44,6 +43,12 @@ const nextAnimeList = [
     "Bokusatsu Tenshi Dokuro-chan",
     "Ben-To",
     "Mahou Tsukai no Yome",
+    "Eighty Six",
+    "Claymore",
+    "K Project",
+    "Darwins Games",
+    "Mushibugyo",
+    "Ousama Ranking",
 ];
 
 export default nextAnimeList;

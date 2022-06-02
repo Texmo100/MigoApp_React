@@ -22,7 +22,7 @@ const reducer = (state, action) => {
         case 'SEARCH':
             const newSearchTerm = action.value;
             return { ...state, searchTerm: newSearchTerm };
-        case 'STATUSFILTER': 
+        case 'STATUSFILTER':
             const newStatusFilter = action.value;
             return { ...state, statusFilter: newStatusFilter };
         case 'ORDERFILTER01':
@@ -45,7 +45,7 @@ const reducer = (state, action) => {
 const AppProvider = props => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const { locationPage, searchTerm } = state;
+    const { locationPage, searchTerm, statusFilter, orderFilter01, orderFilter02 } = state;
 
     const location = useLocation();
 
@@ -55,48 +55,99 @@ const AppProvider = props => {
     }, [location]);
 
     useEffect(() => {
-        if(locationPage === "/animewatchlist") {
+        if (locationPage === "/animewatchlist") {
             const cloneAnimeList = [...initialState.animeWatchList];
             const newAnimeList = [...cloneAnimeList].filter(anime => animeSearcher(anime.title.toLowerCase(), searchTerm.toLowerCase()));
             dispatch({ type: 'FILTERANIME', value: newAnimeList });
         }
 
-        if(locationPage === "/nextanimeslist") {
+        if (locationPage === "/nextanimeslist") {
             const cloneNextAnimeList = [...initialState.nextAnimeList];
             const newNextAnimeList = [...cloneNextAnimeList].filter(animeTitle => animeSearcher(animeTitle.toLowerCase(), searchTerm.toLowerCase()));
             dispatch({ type: 'FILTERNEXTANIME', value: newNextAnimeList });
         }
-    }, [locationPage ,searchTerm]);
+    }, [locationPage, searchTerm]);
 
-    const animeSearcher = (animeTitle, param)=> {
-        if(animeTitle.includes(param)){
+    useEffect(() => {
+        if (locationPage === "/animewatchlist") {
+            const cloneAnimeList = [...initialState.animeWatchList];
+            const filteredAnimeList = statusFilter ? [...cloneAnimeList].filter(anime => anime.status.toLowerCase() === statusFilter.toLowerCase()) : cloneAnimeList;
+            if (orderFilter01) {
+                if (orderFilter01 === 'title') {
+                    const orderedAnimeList = animeSorter('byTitle', filteredAnimeList);
+                    dispatch({ type: 'FILTERANIME', value: orderedAnimeList });
+                }
+                if (orderFilter01 === 'score') {
+                    const orderedAnimeList = animeSorter('byScore', filteredAnimeList);
+                    dispatch({ type: 'FILTERANIME', value: orderedAnimeList });
+                }
+            } else {
+                dispatch({ type: 'FILTERANIME', value: filteredAnimeList });
+            }
+        }
+
+        if (locationPage === "/nextanimeslist") {
+            const cloneNextAnimeList = [...initialState.nextAnimeList];
+            if (orderFilter02) {
+                const newNextAnimeList = orderFilter02 === 'ascending' ? [...cloneNextAnimeList].sort() : [...cloneNextAnimeList].sort().reverse();
+                dispatch({ type: 'FILTERNEXTANIME', value: newNextAnimeList });
+            } else {
+                dispatch({ type: 'FILTERNEXTANIME', value: cloneNextAnimeList });
+            }
+        }
+    }, [locationPage, statusFilter, orderFilter01, orderFilter02]);
+
+    const animeSearcher = (animeTitle, param) => {
+        if (animeTitle.includes(param)) {
             return true;
         }
         return false;
     }
 
+    const animeSorter = (type, animeList) => {
+        if (type === 'byTitle') {
+            const newOrderedAnimeList = [...animeList].sort((animeA, animeB) => {
+                if (animeA.title < animeB.title) {
+                    return -1;
+                }
+        
+                if (animeA.title > animeB.title) {
+                    return 1;
+                }
+        
+                return 0;
+            });
+            return newOrderedAnimeList;
+        }
+
+        if (type === 'byScore') {
+            const newOrderedAnimeList = animeList.sort((animeA, animeB) => animeA.score - animeB.score);
+            return newOrderedAnimeList;
+        }
+    }
+
     const locationHandler = locationPath => {
         dispatch({ type: 'LOCATION', value: locationPath });
     }
-    
+
     const onSearchHandler = searchParam => {
-        dispatch({type: 'SEARCH', value: searchParam });
+        dispatch({ type: 'SEARCH', value: searchParam });
     }
 
     const onSelectHandler = (type, filterParam) => {
-        if(type === 'status') {
-            dispatch({type: 'STATUSFILTER', value: filterParam });
-            console.log({type, filterParam});
+        if (type === 'status') {
+            dispatch({ type: 'STATUSFILTER', value: filterParam });
+            console.log({ type, filterParam });
         }
 
-        if(type === 'order01') {
-            dispatch({type: 'ORDERFILTER01', value: filterParam });
-            console.log({type, filterParam});
+        if (type === 'order01') {
+            dispatch({ type: 'ORDERFILTER01', value: filterParam });
+            console.log({ type, filterParam });
         }
 
-        if(type === 'order02') {
-            dispatch({type: 'ORDERFILTER02', value: filterParam });
-            console.log({type, filterParam});
+        if (type === 'order02') {
+            dispatch({ type: 'ORDERFILTER02', value: filterParam });
+            console.log({ type, filterParam });
         }
     }
 

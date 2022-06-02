@@ -45,7 +45,8 @@ const Content = ({ titlePage, contentType }) => {
                             <label className={styles['filter-label']}>Filter by status</label>
                             <select id="status" className={styles['filter-input']} onChange={selectHandler}>
                                 <option hidden value="">select an option</option>
-                                <option value="inprogress">in progress</option>
+                                <option value="">all</option>
+                                <option value="in progress">in progress</option>
                                 <option value="completed">completed</option>
                                 <option value="pending">pending</option>
                             </select>
@@ -55,6 +56,7 @@ const Content = ({ titlePage, contentType }) => {
                             <label className={styles['filter-label']}>Order by</label>
                             <select id="order01" className={styles['filter-input']} onChange={selectHandler}>
                                 <option hidden value="">select an option</option>
+                                <option value="">all</option>
                                 <option value="title" className={styles['filter-input__option']}>title</option>
                                 <option value="score" className={styles['filter-input__option']}>score</option>
                             </select>
@@ -106,6 +108,7 @@ const Content = ({ titlePage, contentType }) => {
                             <label className={styles['filter-label']}>Order list</label>
                             <select id="order02" className={styles['filter-input']} onChange={selectHandler}>
                                 <option hidden value="">select an option</option>
+                                <option value="">all</option>
                                 <option value="ascending" className={styles['filter-input__option']}>ascending</option>
                                 <option value="descending" className={styles['filter-input__option']}>descending</option>
                             </select>
