@@ -12,8 +12,8 @@ const animeWatchList = [
     {        
         title: "Shinchou Yuusha",
         episodes: 0,
-        genres: ["action", "fantasy"],
         seasons: 1,
+        genres: ["action", "fantasy"],
         status: "completed",
         score: 10.0,
         description: "",
