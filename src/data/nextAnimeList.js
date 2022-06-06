@@ -49,6 +49,8 @@ const nextAnimeList = [
     "Darwins Games",
     "Mushibugyo",
     "Ousama Ranking",
+    "Kawaii dake ja Nai Shikimori-san",
+    "Fantasy Bishoujo Juniku Ojisan to",
 ];
 
 export default nextAnimeList;
