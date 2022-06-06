@@ -31,10 +31,10 @@ const animeWatchList = [
     },
     {        
         title: "Mushoku Tensei: Isekai Ittara Honki Dasu",
-        episodes: 0,
+        episodes: 33,
         seasons: 2,
         genres: ["action", "fantasy", "ecchi"],
-        status: "pending",
+        status: "in progress",
         score: 10.0,
         description: "",
         personalComments: ""
@@ -614,10 +614,10 @@ const animeWatchList = [
         episodes: 50,
         seasons: 4,
         genres: ["action", "romance", "supernatural", "fantasy"],
-        status: "in progress",
+        status: "completed",
         score: 9.8,
         description: "",
-        personalComments: ""
+        personalComments: "The final moment was extremely beautiful"
     },
     {
         title: "GATE",
