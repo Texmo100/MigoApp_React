@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AppContext from '../../../store/AppContext';
 import Sidebar from '../Sidebar/Sidebar';
 import { CgMenuLeftAlt, CgShapeTriangle, CgSearch } from 'react-icons/cg';
@@ -9,6 +9,14 @@ const Header = () => {
     const [isShow, setIsShow] = useState(false);
 
     const { locationPage, onSearchHandler } = useContext(AppContext);
+
+    useEffect(() => {
+        if(isShow) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "visible";
+        }
+    }, [isShow]);
 
     const inputHandler = event => {
         const { value } = event.target;
