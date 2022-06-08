@@ -8,8 +8,10 @@ const AppContext = React.createContext({
     statusFilter: "",
     orderFilter01: "",
     orderFilter02: "",
+    isSidebarShown: false,
     onSearchHandler: (searchParam) => {},
     onSelectHandler: (type, filterParam) => {},
+    onSidebarHandler: (sign) => {},
 });
 
 export default AppContext;

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import AppContext from '../../../store/AppContext';
 import Sidebar from '../Sidebar/Sidebar';
 import { CgMenuLeftAlt, CgShapeTriangle, CgSearch } from 'react-icons/cg';
@@ -6,26 +6,13 @@ import styles from './Header.module.css';
 
 const Header = () => {
     const [searchTerm, setSearchTerm] = useState("");
-    const [isShow, setIsShow] = useState(false);
 
-    const { locationPage, onSearchHandler } = useContext(AppContext);
-
-    useEffect(() => {
-        if(isShow) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "visible";
-        }
-    }, [isShow]);
+    const { locationPage, onSearchHandler, isSidebarShown, onSidebarHandler } = useContext(AppContext);
 
     const inputHandler = event => {
         const { value } = event.target;
         setSearchTerm(value);
         onSearchHandler(value);
-    }
-
-    const buttonHandler = () => {
-        setIsShow(!isShow);
     }
 
     const placeHolderHandler = () => {
@@ -40,10 +27,18 @@ const Header = () => {
 
     let isInputInactive = !locationPage || locationPage === "/";
 
+    const onOpenSidebar = () => {
+        onSidebarHandler('open');
+    }
+
+    const onCloseSidebar = () => {
+        onSidebarHandler('close');
+    }
+
     return (
         <div className={styles.header}>
-            <Sidebar isShow={isShow} onButtonHandler={buttonHandler} />
-            <button type='button' onClick={buttonHandler} className={styles['menu-button']}>
+            <Sidebar isShow={isSidebarShown} onButtonHandler={onCloseSidebar} />
+            <button type='button' onClick={onOpenSidebar} className={styles['menu-button']}>
                 <CgMenuLeftAlt className={styles['menu-button__icon']} />
             </button>
             <div className={`${styles['search-input']} ${isInputInactive ? styles['search-input--inactive'] : styles['search-input--active']}`}>

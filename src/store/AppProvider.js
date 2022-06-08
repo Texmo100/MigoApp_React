@@ -12,6 +12,7 @@ const initialState = {
     statusFilter: "",
     orderFilter01: "",
     orderFilter02: "",
+    isSidebarShown: false,
 };
 
 const reducer = (state, action) => {
@@ -37,6 +38,9 @@ const reducer = (state, action) => {
         case 'FILTERNEXTANIME':
             const newFilteredNextAnimeList = action.value;
             return { ...state, nextAnimeList: newFilteredNextAnimeList };
+        case 'SIDEBAR':
+            const newSidebarValue = action.value;
+            return { ...state, isSidebarShown: newSidebarValue };
         default:
             return state;
     };
@@ -45,7 +49,7 @@ const reducer = (state, action) => {
 const AppProvider = props => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const { locationPage, searchTerm, statusFilter, orderFilter01, orderFilter02 } = state;
+    const { locationPage, searchTerm, statusFilter, orderFilter01, orderFilter02, isSidebarShown } = state;
 
     const location = useLocation();
 
@@ -96,6 +100,10 @@ const AppProvider = props => {
             }
         }
     }, [locationPage, statusFilter, orderFilter01, orderFilter02]);
+
+    useEffect(() => {
+        console.log(isSidebarShown);
+    }, [isSidebarShown]);
 
     const animeSearcher = (animeTitle, param) => {
         if (animeTitle.includes(param)) {
@@ -151,13 +159,25 @@ const AppProvider = props => {
         }
     }
 
+    const onSidebarHandler = sign => {
+        if(sign === 'open') {
+            dispatch({ type: 'SIDEBAR', value: true });
+        }
+
+        if(sign === 'close') {
+            dispatch({ type: 'SIDEBAR', value: false });
+        }
+    }
+
     const migoContext = {
         animeWatchList: state.animeWatchList,
         nextAnimeList: state.nextAnimeList,
         locationPage: state.locationPage,
         searchTerm: state.searchTerm,
+        isSidebarShown: state.isSidebarShown,
         onSearchHandler: onSearchHandler,
-        onSelectHandler: onSelectHandler
+        onSelectHandler: onSelectHandler,
+        onSidebarHandler: onSidebarHandler
     };
 
     return (
