@@ -4,9 +4,10 @@ import Card from '../../Card/Card';
 import { CgMathPlus } from 'react-icons/cg';
 import { MdEditNote } from 'react-icons/md';
 import styles from "./Content.module.css";
+import SideAction from "../SideAction/SideAction";
 
 const Content = ({ titlePage, contentType }) => {
-    const { animeWatchList, nextAnimeList, onSelectHandler } = useContext(AppContext);
+    const { animeWatchList, nextAnimeList, onSelectHandler, isSideActionShown, onSideActionHandler } = useContext(AppContext);
 
     let isAnimeWatchListEmpty = animeWatchList.length === 0;
     let isNextAnimeListEmpty = nextAnimeList.length === 0;
@@ -14,6 +15,14 @@ const Content = ({ titlePage, contentType }) => {
     const selectHandler = (event) => {
         const { id, value } = event.target;
         onSelectHandler(id, value);
+    }
+
+    const onOpenHandler = () => {
+        onSideActionHandler('open');
+    }
+
+    const onCloseHandler = () => {
+        onSideActionHandler('close');
     }
 
     if (contentType === "home") {
@@ -27,10 +36,12 @@ const Content = ({ titlePage, contentType }) => {
     if (contentType === "anime") {
         return (
             <div className={styles.content}>
+                <SideAction isShow={isSideActionShown} onClose={onCloseHandler} />
+                
                 <h1 className={styles.title}>{titlePage}</h1>
                 <div className={styles.tools}>
                     <div className={styles['actions']}>
-                        <button type="button" className={styles['action']}>
+                        <button type="button" className={styles['action']} onClick={onOpenHandler}>
                             <CgMathPlus className={styles['action__icon']} />
                             <p className={styles['action__text']}>Add anime</p>
                         </button>

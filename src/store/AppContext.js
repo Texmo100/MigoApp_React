@@ -9,9 +9,11 @@ const AppContext = React.createContext({
     orderFilter01: "",
     orderFilter02: "",
     isSidebarShown: false,
+    isSideActionShown: false,
     onSearchHandler: (searchParam) => {},
     onSelectHandler: (type, filterParam) => {},
     onSidebarHandler: (sign) => {},
+    onSideActionHandler: (sign) => {},
 });
 
 export default AppContext;

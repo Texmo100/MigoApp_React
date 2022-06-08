@@ -13,6 +13,7 @@ const initialState = {
     orderFilter01: "",
     orderFilter02: "",
     isSidebarShown: false,
+    isSideActionShown: false,
 };
 
 const reducer = (state, action) => {
@@ -41,6 +42,9 @@ const reducer = (state, action) => {
         case 'SIDEBAR':
             const newSidebarValue = action.value;
             return { ...state, isSidebarShown: newSidebarValue };
+        case 'SIDEACTION':
+            const newSideActionValue = action.value;
+            return { ...state, isSideActionShown: newSideActionValue };
         default:
             return state;
     };
@@ -54,7 +58,9 @@ const AppProvider = props => {
         searchTerm,
         statusFilter,
         orderFilter01,
-        orderFilter02
+        orderFilter02,
+        isSidebarShown,
+        isSideActionShown
     } = state;
 
     const location = useLocation();
@@ -106,6 +112,14 @@ const AppProvider = props => {
             }
         }
     }, [locationPage, statusFilter, orderFilter01, orderFilter02]);
+
+    useEffect(() => {
+        if(isSidebarShown || isSideActionShown) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'visible';
+        }
+    }, [isSidebarShown, isSideActionShown]);
 
     const animeSearcher = (animeTitle, param) => {
         if (animeTitle.includes(param)) {
@@ -171,6 +185,16 @@ const AppProvider = props => {
         }
     }
 
+    const onSideActionHandler = sign => {
+        if(sign === 'open') {
+            dispatch({ type: 'SIDEACTION', value: true });
+        }
+
+        if(sign === 'close') {
+            dispatch({ type: 'SIDEACTION', value: false });
+        }
+    }
+
     const migoContext = {
         animeWatchList: state.animeWatchList,
         nextAnimeList: state.nextAnimeList,
@@ -180,9 +204,11 @@ const AppProvider = props => {
         orderFilter01: state.orderFilter01,
         orderFilter02: state.orderFilter02,
         isSidebarShown: state.isSidebarShown,
+        isSideActionShown: state.isSideActionShown,
         onSearchHandler: onSearchHandler,
         onSelectHandler: onSelectHandler,
-        onSidebarHandler: onSidebarHandler
+        onSidebarHandler: onSidebarHandler,
+        onSideActionHandler: onSideActionHandler,
     };
 
     return (

@@ -4,6 +4,7 @@
     background-color: black;
     position: fixed;
     top: 0;
+    z-index: 3;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 6rem 10rem auto 6rem;
