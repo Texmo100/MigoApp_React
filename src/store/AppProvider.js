@@ -49,7 +49,13 @@ const reducer = (state, action) => {
 const AppProvider = props => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const { locationPage, searchTerm, statusFilter, orderFilter01, orderFilter02, isSidebarShown } = state;
+    const {
+        locationPage,
+        searchTerm,
+        statusFilter,
+        orderFilter01,
+        orderFilter02
+    } = state;
 
     const location = useLocation();
 
@@ -100,10 +106,6 @@ const AppProvider = props => {
             }
         }
     }, [locationPage, statusFilter, orderFilter01, orderFilter02]);
-
-    useEffect(() => {
-        console.log(isSidebarShown);
-    }, [isSidebarShown]);
 
     const animeSearcher = (animeTitle, param) => {
         if (animeTitle.includes(param)) {
@@ -174,6 +176,9 @@ const AppProvider = props => {
         nextAnimeList: state.nextAnimeList,
         locationPage: state.locationPage,
         searchTerm: state.searchTerm,
+        statusFilter: state.statusFilter,
+        orderFilter01: state.orderFilter01,
+        orderFilter02: state.orderFilter02,
         isSidebarShown: state.isSidebarShown,
         onSearchHandler: onSearchHandler,
         onSelectHandler: onSelectHandler,
