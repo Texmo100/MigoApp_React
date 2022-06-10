@@ -45,6 +45,9 @@ const reducer = (state, action) => {
         case 'SIDEACTION':
             const newSideActionValue = action.value;
             return { ...state, isSideActionShown: newSideActionValue };
+        case 'ADDANIME':
+            const updatedAnimeList = action.value;
+            return { ...state, animeWatchList: updatedAnimeList };
         default:
             return state;
     };
@@ -60,7 +63,7 @@ const AppProvider = props => {
         orderFilter01,
         orderFilter02,
         isSidebarShown,
-        isSideActionShown
+        isSideActionShown,
     } = state;
 
     const location = useLocation();
@@ -114,7 +117,7 @@ const AppProvider = props => {
     }, [locationPage, statusFilter, orderFilter01, orderFilter02]);
 
     useEffect(() => {
-        if(isSidebarShown || isSideActionShown) {
+        if (isSidebarShown || isSideActionShown) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'visible';
@@ -134,11 +137,11 @@ const AppProvider = props => {
                 if (animeA.title < animeB.title) {
                     return -1;
                 }
-        
+
                 if (animeA.title > animeB.title) {
                     return 1;
                 }
-        
+
                 return 0;
             });
             return newOrderedAnimeList;
@@ -161,37 +164,47 @@ const AppProvider = props => {
     const onSelectHandler = (type, filterParam) => {
         if (type === 'status') {
             dispatch({ type: 'STATUSFILTER', value: filterParam });
-            console.log({ type, filterParam });
         }
 
         if (type === 'order01') {
             dispatch({ type: 'ORDERFILTER01', value: filterParam });
-            console.log({ type, filterParam });
         }
 
         if (type === 'order02') {
             dispatch({ type: 'ORDERFILTER02', value: filterParam });
-            console.log({ type, filterParam });
         }
     }
 
     const onSidebarHandler = sign => {
-        if(sign === 'open') {
+        if (sign === 'open') {
             dispatch({ type: 'SIDEBAR', value: true });
         }
 
-        if(sign === 'close') {
+        if (sign === 'close') {
             dispatch({ type: 'SIDEBAR', value: false });
         }
     }
 
     const onSideActionHandler = sign => {
-        if(sign === 'open') {
+        if (sign === 'open') {
             dispatch({ type: 'SIDEACTION', value: true });
         }
 
-        if(sign === 'close') {
+        if (sign === 'close') {
             dispatch({ type: 'SIDEACTION', value: false });
+        }
+    }
+
+    const onAddAnime = (type, anime) => {
+        if (type === 'anime') {
+            const newAnimeList = [...initialState.animeWatchList];
+            newAnimeList.push(anime);
+            dispatch({ type: 'ADDANIME', value: newAnimeList });
+            console.log(newAnimeList);
+        }
+
+        if (type === 'nextAnime') {
+            dispatch({ type: 'ADDNEXTANIME', value: anime });
         }
     }
 
@@ -209,6 +222,7 @@ const AppProvider = props => {
         onSelectHandler: onSelectHandler,
         onSidebarHandler: onSidebarHandler,
         onSideActionHandler: onSideActionHandler,
+        onAddAnime: onAddAnime,
     };
 
     return (

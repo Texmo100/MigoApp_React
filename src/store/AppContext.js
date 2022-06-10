@@ -14,6 +14,7 @@ const AppContext = React.createContext({
     onSelectHandler: (type, filterParam) => {},
     onSidebarHandler: (sign) => {},
     onSideActionHandler: (sign) => {},
+    onAddAnime: (type, anime) => {}
 });
 
 export default AppContext;
