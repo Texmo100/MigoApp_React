@@ -51,6 +51,10 @@ const nextAnimeList = [
     "Ousama Ranking",
     "Kawaii dake ja Nai Shikimori-san",
     "Fantasy Bishoujo Juniku Ojisan to",
+    "Flip Flappers",
+    "Lapis Re:Lights",
+    "Assault Lily",
+    "Rakshasha street",
 ];
 
 export default nextAnimeList;

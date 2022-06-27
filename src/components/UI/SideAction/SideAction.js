@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './SideAction.module.css';
+import AddAnimeForm from '../../AddAnimeForm/AddAnimeForm';
 import { CgClose } from 'react-icons/cg';
+import styles from './SideAction.module.css';
 
 const SideAction = ({ isShow, onClose }) => {
     return (
@@ -12,24 +13,8 @@ const SideAction = ({ isShow, onClose }) => {
             </div>
 
             <div className={styles['sa-body']}>
-                <p className={styles['sa-title']}>Page Action title</p>
-                <form className={styles['form']}>
-                    <div className={styles['form-input']}>
-                        <label className={styles['form-input__label']}>Input label</label>
-                        <input
-                            type='text'
-                            className={styles['form-input__input']}
-                        />
-                    </div>
-
-                    <div className={styles['form-input']}>
-                        <label className={styles['form-input__label']}>Input label</label>
-                        <input
-                            type='text'
-                            className={styles['form-input__input']}
-                        />
-                    </div>
-                </form>
+                <p className={styles['sa-title']}>Add anime</p>
+                <AddAnimeForm />
             </div>
 
             <div className={styles['sa-footer']}>

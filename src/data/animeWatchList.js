@@ -34,10 +34,10 @@ const animeWatchList = [
         episodes: 33,
         seasons: 2,
         genres: ["action", "fantasy", "ecchi"],
-        status: "in progress",
+        status: "completed",
         score: 10.0,
         description: "",
-        personalComments: ""
+        personalComments: "The best isekai anime ever created"
     },
     {        
         title: "Dororo",
