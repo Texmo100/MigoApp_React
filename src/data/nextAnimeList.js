@@ -55,6 +55,9 @@ const nextAnimeList = [
     "Lapis Re:Lights",
     "Assault Lily",
     "Rakshasha street",
+    "Vanitas no carte",
+    "Tensai Oji no Akaji Kokka Saisei Jutsu",
+    "Shumatsu Nani Shitemasu ka? Isogashi Desu ka? Sukutte Moratte li Desu ka?",
 ];
 
 export default nextAnimeList;
