@@ -869,6 +869,28 @@ const animeWatchList = [
         description: "",
         personalComments: ""
     },
+    {
+     
+        title: "Dimension W",
+        episodes: 12,
+        seasons: 1,
+        genres: ["action", "sci-fi"],
+        status: "completed",
+        score: 9.0,
+        description: "",
+        personalComments: ""
+    },
+    {
+     
+        title: "Takt Op Destiny",
+        episodes: 12,
+        seasons: 1,
+        genres: ["action", "fantasy"],
+        status: "in progress",
+        score: 9.0,
+        description: "",
+        personalComments: ""
+    },
     //----- Vampires and super power collectively
     // {
     //  

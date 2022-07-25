@@ -58,6 +58,17 @@ const nextAnimeList = [
     "Vanitas no carte",
     "Tensai Oji no Akaji Kokka Saisei Jutsu",
     "Shumatsu Nani Shitemasu ka? Isogashi Desu ka? Sukutte Moratte li Desu ka?",
+    "Uni Taisen: Zodiac War",
+    "Summer Time Rendering",
+    "Solo leveling",
+    "Shinigami Bocchan to Kuro Maid",
+    "Project Engage",
+    "Soredemo Ayumu wa yosetekuru",
+    "Fire force",
+    "Busou Shinki",
+    "Mamahaha no Tsurego ga Motokano Datta",
+    "Shirobako",
+    "Kuro no Shoukanshi",
 ];
 
 export default nextAnimeList;
