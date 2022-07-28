@@ -110,8 +110,8 @@ const animeWatchList = [
         personalComments: ""
     },
     {
-        title: "Slime Taoshite 300-nen, Shiranai Uchi ni Level Max ni Nattemashita",
-        episodes: 0,
+        title: "Tensei Shitara Slime Datta Ken",
+        episodes: 49,
         seasons: 3,
         genres: ["action", "fantasy", "comedy", "adventure"],
         status: "pending",
@@ -881,12 +881,11 @@ const animeWatchList = [
         personalComments: ""
     },
     {
-     
         title: "Takt Op Destiny",
         episodes: 12,
         seasons: 1,
         genres: ["action", "fantasy"],
-        status: "in progress",
+        status: "completed",
         score: 9.0,
         description: "",
         personalComments: ""

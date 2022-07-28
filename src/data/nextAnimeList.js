@@ -69,6 +69,7 @@ const nextAnimeList = [
     "Mamahaha no Tsurego ga Motokano Datta",
     "Shirobako",
     "Kuro no Shoukanshi",
+    "SSSS.Dynazenon",
 ];
 
 export default nextAnimeList;
