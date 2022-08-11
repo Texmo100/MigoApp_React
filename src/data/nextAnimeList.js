@@ -1,5 +1,4 @@
 const nextAnimeList = [
-    "Keijo",
     "Kyoukai no Kanata",
     "Toaru Majutsu no Index (Saga)",
     "Persona (Saga)",

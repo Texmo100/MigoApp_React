@@ -900,6 +900,16 @@ const animeWatchList = [
         description: "",
         personalComments: ""
     },
+    {
+        title: "Keijo",
+        episodes: 12,
+        seasons: 1,
+        genres: ["sports", "ecchi"],
+        status: "completed",
+        score: 9.0,
+        description: "",
+        personalComments: ""
+    },
     //----- Vampires and super power collectively
     // {
     //  
