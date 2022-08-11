@@ -890,6 +890,16 @@ const animeWatchList = [
         description: "",
         personalComments: ""
     },
+    {
+        title: "Shinka no Mi: Shiranai Uchi ni Kachigumi Jinsei (The Fruit of Evolution)",
+        episodes: 12,
+        seasons: 1,
+        genres: ["action", "fantasy"],
+        status: "completed",
+        score: 9.0,
+        description: "",
+        personalComments: ""
+    },
     //----- Vampires and super power collectively
     // {
     //  
